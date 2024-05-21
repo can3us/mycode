@@ -1,0 +1,24 @@
+---
+- name: A simple file playbook
+  hosts: planetexpress
+  gather_facts: yes
+  connection: ansible.builtin.ssh
+
+  tasks:
+   - name: make a directory
+     ansible.builtin.file:
+       path: ~/output/
+       state: directory
+
+   - name: copy a file
+     ansible.builtin.copy:
+       content: "{{ ansible_env.HOME }}" # this retrieves env info from gathered facts ("left side" of the shell command) This i got from the lab, i didn't add th
+       dest: ~/output/paths.txt          #("right side" of the shell command)
+       force: yes                        #  # always overwrite the file if the content is different
+
+
+  # NOT idempotent (will run every time)
+  # idempotent solution 
+
+         #   - name: use shell module with wildcarding
+         #ansible.builtin.shell: echo $HOME >> ~/output/path.txt 
