@@ -1,0 +1,23 @@
+---
+ - name: bootstrapping and new user    ##metadata (just a name)
+   hosts: planetexpress               # use the raiders group to connect
+   connection: ssh                    # use openSSH to connect
+   gather_facts: False                # no need to audit targets
+
+   vars: 
+     dem_users_tho_list:
+       - rey
+       - glenn
+       - jerry
+       - justin
+       - doug
+
+   tasks: 
+ 
+   # item <-- is a variable that represents whatever name is coming out of that list
+   - name: add a user
+     ansible.builtin.user:
+       name: "{{ item|capitalize }}"  
+       state: present
+     become: yes    #keword here
+     loop: "{{ dem_users_tho_list }}"    
