@@ -1,0 +1,7 @@
+---
+  - name: install apache/pip
+    apt: 
+      name:
+        - apache2
+        - pythong3-pip
+      state: present    
