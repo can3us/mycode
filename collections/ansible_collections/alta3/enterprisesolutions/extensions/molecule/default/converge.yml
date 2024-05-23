@@ -1,0 +1,15 @@
+---
+#Replace the contents of the file so it reads as follows:
+- name: Include a playbook from a collection
+  ansible.builtin.import_playbook: alta3.enterprisesolutions.my_playbook.yml
+
+
+
+   #THIS WAS THE ORGINAL ONE, but i replace it with the above code
+#- name: Converge
+#  hosts: all
+#  gather_facts: false
+#  tasks:
+#    - name: Replace this task with one that validates your content
+#      ansible.builtin.debug:
+#        msg: "This is the effective test"
